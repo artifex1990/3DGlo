@@ -1,5 +1,4 @@
+// eslint-disable-next-line import/extensions
 import timerModule from './modules/timer.js';
-import helloModule from './modules/hello.js';
 
-timerModule('09 january 2024 23:05:00');
-helloModule();
+timerModule('10 january 2024 01:01:00');
