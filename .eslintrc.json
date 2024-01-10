@@ -8,7 +8,10 @@
         "ecmaVersion": "latest",
         "sourceType": "module"
     },
-    "ignorePatterns": ["**/dist/js/*.js"],
+    "ignorePatterns": [
+        "**/dist/js/*.js",
+        "webpack.config.js"
+    ],
     "rules": {
     }
 }

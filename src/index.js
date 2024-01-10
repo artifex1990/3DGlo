@@ -1,6 +1,3 @@
-/* eslint-disable import/extensions */
-import oneModule from './modules/one.js';
-import twoModule from './modules/two.js';
+import timerModule from './modules/timer';
 
-oneModule();
-twoModule();
+timerModule('13 january 2024 01:01:00');

@@ -10,23 +10,23 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./index.js":
-/*!******************!*\
-  !*** ./index.js ***!
-  \******************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _modules_timer_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/timer.js */ \"./modules/timer.js\");\n// eslint-disable-next-line import/extensions\n\n\n(0,_modules_timer_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"])('13 january 2024 01:01:00');\n\n\n//# sourceURL=webpack:///./index.js?");
-
-/***/ }),
-
-/***/ "./modules/timer.js":
+/***/ "./modules/hello.js":
 /*!**************************!*\
-  !*** ./modules/timer.js ***!
+  !*** ./modules/hello.js ***!
   \**************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nconst timerModule = (deadline) => {\n  const timerHours = document.getElementById('timer-hours');\n  const timerMinutes = document.getElementById('timer-minutes');\n  const timerSeconds = document.getElementById('timer-seconds');\n\n  const zeroForwardModify = (time) => (time < 10 ? `0${time}` : time);\n\n  const getTimeRemaining = () => {\n    const dateStop = new Date(deadline).getTime();\n    const dateNew = new Date().getTime();\n    const dateRemaining = (dateStop - dateNew) / 1000;\n    const hours = Math.floor(dateRemaining / 60 / 60);\n    const minutes = Math.floor(dateRemaining / 60) % 60;\n    const seconds = Math.floor(dateRemaining % 60);\n\n    return {\n      dateRemaining,\n      hours,\n      minutes,\n      seconds,\n    };\n  };\n\n  const updateClock = () => {\n    const timeRemaining = getTimeRemaining();\n\n    if (timeRemaining.dateRemaining > 0) {\n      timerHours.textContent = zeroForwardModify(timeRemaining.hours);\n      timerMinutes.textContent = zeroForwardModify(timeRemaining.minutes);\n      timerSeconds.textContent = zeroForwardModify(timeRemaining.seconds);\n\n      setTimeout(updateClock, 1000);\n    }\n  };\n\n  updateClock();\n};\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (timerModule);\n\n\n//# sourceURL=webpack:///./modules/timer.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nconst helloModule = () => {\n  // eslint-disable-next-line max-len\n  const capitalizeFirstLetter = (string) => (string ? string[0].toUpperCase() + string.slice(1) : string);\n  const getDayPeriod = () => new Intl.DateTimeFormat('ru', { dayPeriod: 'narrow' }).format(new Date());\n  const getTodayName = () => new Intl.DateTimeFormat('ru', { weekday: 'long' }).format(new Date());\n  const getCurrentTime = () => new Intl.DateTimeFormat('en', { timeStyle: 'medium' }).format(new Date());\n  const getStillDayOfNewYear = () => Math.floor((new Date(`1 january ${+new Date().getFullYear() + 1}`) - new Date()) / 1000 / 60 / 60 / 24);\n  const declinationOfDays = (days) => {\n    const dayCondition = days % 10;\n    if (dayCondition === 1) return 'день';\n    if (dayCondition > 1 && dayCondition < 5) return 'дня';\n\n    return 'дней';\n  };\n\n  const printDates = () => {\n    const dayPeriod = getDayPeriod();\n    const stillDayOfNewYear = getStillDayOfNewYear();\n    const greeting = {\n      утра: 'Доброе утро',\n      дня: 'Добрый день',\n      вечера: 'Добрый вечер',\n      ночи: 'Доброй ночи',\n    };\n\n    const timeOfDay = document.getElementById('time-of-day');\n    const toDay = document.getElementById('today');\n    const currentTime = document.getElementById('current-time');\n    const stillUntilNewYear = document.getElementById('still-until-new-year');\n    timeOfDay.textContent = greeting[dayPeriod];\n    toDay.textContent = `Сегодня: ${capitalizeFirstLetter(getTodayName())}`;\n    currentTime.textContent = `Текущее время: ${getCurrentTime()}`;\n    stillUntilNewYear.textContent = `До нового года осталось ${stillDayOfNewYear} ${declinationOfDays(stillDayOfNewYear)}`;\n\n    setTimeout(printDates, 1000);\n  };\n\n  printDates();\n};\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (helloModule);\n\n\n//# sourceURL=webpack:///./modules/hello.js?");
+
+/***/ }),
+
+/***/ "./task6.js":
+/*!******************!*\
+  !*** ./task6.js ***!
+  \******************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _modules_hello__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/hello */ \"./modules/hello.js\");\n\n\n(0,_modules_hello__WEBPACK_IMPORTED_MODULE_0__[\"default\"])();\n\n\n//# sourceURL=webpack:///./task6.js?");
 
 /***/ })
 
@@ -90,7 +90,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module can't be inlined because the eval devtool is used.
-/******/ 	var __webpack_exports__ = __webpack_require__("./index.js");
+/******/ 	var __webpack_exports__ = __webpack_require__("./task6.js");
 /******/ 	
 /******/ })()
 ;
