@@ -16,7 +16,7 @@ const helloModule = () => {
   const printDates = () => {
     const dayPeriod = getDayPeriod();
     const stillDayOfNewYear = getStillDayOfNewYear();
-    const greeting = {
+    const greetingMessage = {
       утра: 'Доброе утро',
       дня: 'Добрый день',
       вечера: 'Добрый вечер',
@@ -27,7 +27,7 @@ const helloModule = () => {
     const toDay = document.getElementById('today');
     const currentTime = document.getElementById('current-time');
     const stillUntilNewYear = document.getElementById('still-until-new-year');
-    timeOfDay.textContent = greeting[dayPeriod];
+    timeOfDay.textContent = greetingMessage[dayPeriod];
     toDay.textContent = `Сегодня: ${capitalizeFirstLetter(getTodayName())}`;
     currentTime.textContent = `Текущее время: ${getCurrentTime()}`;
     stillUntilNewYear.textContent = `До нового года осталось ${stillDayOfNewYear} ${declinationOfDays(stillDayOfNewYear)}`;
