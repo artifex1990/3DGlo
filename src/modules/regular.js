@@ -7,18 +7,25 @@ const regular = () => {
 
   // eslint-disable-next-line no-param-reassign
   const name = (event) => {
+    // eslint-disable-next-line no-param-reassign
     event.target.value = event.target.value.replace(/[^а-яА-Я-\s]/gi, '');
+    // eslint-disable-next-line no-param-reassign
     event.target.value = event.target.value.replace(/\s+/g, ' ');
+    // eslint-disable-next-line no-param-reassign
     event.target.value = event.target.value.replace(/[-]+/g, '-');
   };
   // eslint-disable-next-line no-param-reassign, no-useless-escape
   const email = (event) => {
+    // eslint-disable-next-line no-param-reassign
     event.target.value = event.target.value.replace(/[^a-zA-Z0-9-\@\_\.\!\~\*]/gi, '');
+    // eslint-disable-next-line no-param-reassign
     event.target.value = event.target.value.replace(/[-]+/g, '-');
   };
   // eslint-disable-next-line no-param-reassign
   const phone = (event) => {
+    // eslint-disable-next-line no-param-reassign
     event.target.value = event.target.value.replace(/[^\d()-]/g, '');
+    // eslint-disable-next-line no-param-reassign
     event.target.value = event.target.value.replace(/[-]+/g, '-');
   };
   // eslint-disable-next-line no-param-reassign
