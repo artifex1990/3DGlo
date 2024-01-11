@@ -6,31 +6,24 @@ const menu = () => {
   const menuItems = menu.querySelectorAll('ul>li>a');
   const serviceBlock = document.querySelector('a[href="#service-block"]');
 
+  const animationScroll = (a) => {
+    const element = document.querySelector(a.getAttribute('href'));
+    element.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'start' });
+  };
   const handleMenu = () => {
     menu.classList.toggle('active-menu');
   };
-
-  const animaitionScrool = (a) => {
-    const element = document.querySelector(a.getAttribute('href'));
-    if (element && document.body.clientWidth > 767) {
-      window.scrollTo({
-        top: Math.floor(element.getBoundingClientRect().top),
-        behavior: 'smooth',
-      });
-    }
-  };
-
   menuBtn.addEventListener('click', handleMenu);
   closeBtn.addEventListener('click', handleMenu);
   serviceBlock.addEventListener('click', (event) => {
     event.preventDefault();
-    animaitionScrool(event.target.parentElement);
+    animationScroll(event.target.parentElement);
   });
 
   menuItems.forEach((item) => {
     item.addEventListener('click', (event) => {
       event.preventDefault();
-      animaitionScrool(event.target);
+      animationScroll(event.target);
       handleMenu();
     });
   });

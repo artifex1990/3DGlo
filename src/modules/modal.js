@@ -5,21 +5,25 @@ const modal = () => {
   const closeBtn = document.querySelector('.popup-close');
   let opacity = 0;
   const animationOpacity = () => {
-    if (modal.style.opacity < 101) {
-      modal.style.opacity = `${opacity}%`;
-      opacity += 5;
+    const idAnimation = requestAnimationFrame(animationOpacity);
+
+    if (modal.style.opacity < 1) {
+      modal.style.opacity = opacity;
+      opacity += 0.02;
+    } else {
+      cancelAnimationFrame(idAnimation);
     }
   };
+
   buttons.forEach((button) => button.addEventListener('click', () => {
     modal.style.display = 'block';
     if (document.body.clientWidth > 767) {
       opacity = 0;
-      modal.style.opacity = '0%';
-      setInterval(() => requestAnimationFrame(animationOpacity), 25);
+      modal.style.opacity = 0;
+      animationOpacity();
     }
   }));
   closeBtn.addEventListener('click', () => {
-    cancelAnimationFrame(animationOpacity);
     modal.style.display = '';
   });
 };
