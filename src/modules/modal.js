@@ -2,7 +2,6 @@ const modal = () => {
   // eslint-disable-next-line no-shadow
   const modal = document.querySelector('.popup');
   const buttons = document.querySelectorAll('.popup-btn');
-  const closeBtn = document.querySelector('.popup-close');
   let opacity = 0;
   const animationOpacity = () => {
     const idAnimation = requestAnimationFrame(animationOpacity);
@@ -23,8 +22,10 @@ const modal = () => {
       animationOpacity();
     }
   }));
-  closeBtn.addEventListener('click', () => {
-    modal.style.display = '';
+  modal.addEventListener('click', (e) => {
+    if (!e.target.closest('.popup-content') || e.target.classList.contains('popup-close')) {
+      modal.style.display = 'none';
+    }
   });
 };
 

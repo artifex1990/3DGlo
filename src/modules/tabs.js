@@ -1,19 +1,23 @@
 const tabs = () => {
-    const tabPanel = document.querySelector('.service-header');
-    const tabs = document.querySelector('.service-header-tab');
-    const tabsContent = document.querySelectorAll('.service-tab');
+  // eslint-disable-next-line no-shadow
+  const tabs = document.querySelectorAll('.service-header-tab');
+  const tabPanel = document.querySelector('.service-header');
+  const tabContent = document.querySelectorAll('.service-tab');
 
-    tabPanel.addEventListener('click', (e) => {
-        if (e.target.classList.contains('service-header-tab')) {
-            tabs.forEach((tab, index) => {
-                if (tab === e.target) {
-                    tab.classList.add('active');
-                } else {
-                    tab.classList.remove('active');
-                }
-            });
+  tabPanel.addEventListener('click', (e) => {
+    if (e.target.closest('.service-header-tab')) {
+      const tabBtn = e.target.closest('.service-header-tab');
+      tabs.forEach((tab, index) => {
+        if (tab === tabBtn) {
+          tab.classList.add('active');
+          tabContent[index].classList.remove('d-none');
+        } else {
+          tab.classList.remove('active');
+          tabContent[index].classList.add('d-none');
         }
-    });
+      });
+    }
+  });
 };
 
 export default tabs;
