@@ -18,6 +18,9 @@
     "url": "https://github.com/artifex1990/3DGlo/issues"
   },
   "homepage": "https://github.com/artifex1990/3DGlo#readme",
+  "dependencies": {
+    "swiper": "^11.0.5"
+  },
   "devDependencies": {
     "concurrently": "^8.2.2",
     "eslint": "^8.56.0",
