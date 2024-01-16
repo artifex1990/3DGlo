@@ -1,32 +1,44 @@
 const slider = () => {
   const sliderBlock = document.querySelector('.portfolio-content');
   const slides = document.querySelectorAll('.portfolio-item');
-  const dots = document.querySelectorAll('.dot');
+  const dotBlock = document.querySelector('.portfolio-dots');
   const timeInterval = 2000;
   let currentSlide = 0;
   let interval;
 
-  const prevSlide = (elems, index, strClass) => {
-    elems[index].classList.remove(strClass);
+  const generateDots = () => {
+    dotBlock.innerHTML = '';
+    for (let i = 0; i < slides.length; i += 1) {
+      const li = document.createElement('li');
+      li.classList.add('dot');
+      if (!i) li.classList.add('dot-active');
+      dotBlock.appendChild(li);
+    }
   };
 
-  const nextSlide = (elems, index, strClass) => {
-    elems[index].classList.add(strClass);
+  const prevSlide = (elem, index, strClass) => {
+    elem[index].classList.remove(strClass);
+  };
+
+  const nextSlide = (elem, index, strClass) => {
+    elem[index].classList.add(strClass);
   };
 
   const autoSlide = () => {
-    prevSlide(dots, currentSlide, 'dot-active');
+    prevSlide(dotBlock.childNodes, currentSlide, 'dot-active');
     prevSlide(slides, currentSlide, 'portfolio-item-active');
     currentSlide += 1;
     if (currentSlide >= slides.length) {
       currentSlide = 0;
     }
-    nextSlide(dots, currentSlide, 'dot-active');
+    nextSlide(dotBlock.childNodes, currentSlide, 'dot-active');
     nextSlide(slides, currentSlide, 'portfolio-item-active');
   };
+
   const startSlide = (timer = 1500) => {
     interval = setInterval(autoSlide, timer);
   };
+  
   const stopSlide = () => {
     clearInterval(interval);
   };
@@ -37,7 +49,7 @@ const slider = () => {
     e.preventDefault();
 
     if (!element.matches('.dot, .portfolio-btn')) return;
-    prevSlide(dots, currentSlide, 'dot-active');
+    prevSlide(dotBlock.childNodes, currentSlide, 'dot-active');
     prevSlide(slides, currentSlide, 'portfolio-item-active');
 
     if (element.matches('#arrow-right')) {
@@ -49,7 +61,7 @@ const slider = () => {
     }
 
     if (element.classList.contains('dot')) {
-      dots.forEach((dot, index) => {
+      dotBlock.childNodes.forEach((dot, index) => {
         if (element === dot) {
           currentSlide = index;
         }
@@ -64,7 +76,7 @@ const slider = () => {
       currentSlide = slides.length - 1;
     }
 
-    nextSlide(dots, currentSlide, 'dot-active');
+    nextSlide(dotBlock.childNodes, currentSlide, 'dot-active');
     nextSlide(slides, currentSlide, 'portfolio-item-active');
   });
 
@@ -80,6 +92,7 @@ const slider = () => {
     }
   }, true);
 
+  generateDots();
   startSlide(timeInterval);
 };
 
