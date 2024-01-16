@@ -38,7 +38,7 @@ const slider = () => {
   const startSlide = (timer = 1500) => {
     interval = setInterval(autoSlide, timer);
   };
-  
+
   const stopSlide = () => {
     clearInterval(interval);
   };
