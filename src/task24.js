@@ -1,3 +1,3 @@
-import helloModule from './modules/hello';
+import task24 from './modules/task24';
 
-helloModule();
+task24();
