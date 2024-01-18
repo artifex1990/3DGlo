@@ -1,3 +1,5 @@
+import { animate } from './helpers';
+
 const calc = (price = 100) => {
   const calcBlock = document.querySelector('.calc-block');
   const calcType = document.querySelector('.calc-type');
@@ -27,11 +29,18 @@ const calc = (price = 100) => {
 
     if (calcTypeValue && calcSquareValue) {
       totalValue = price * calcTypeValue * calcSquareValue * calcCountValue * calcDayValue;
+      animate({
+        duration: 100,
+        timing(timeFraction) {
+          return timeFraction;
+        },
+        draw(progress) {
+          total.textContent = `${totalValue * progress * 100}`;
+        },
+      });
     } else {
       totalValue = 0;
     }
-
-    total.textContent = totalValue;
   };
 
   calcBlock.addEventListener('input', countCalc);
