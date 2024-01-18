@@ -29,18 +29,19 @@ const calc = (price = 100) => {
 
     if (calcTypeValue && calcSquareValue) {
       totalValue = price * calcTypeValue * calcSquareValue * calcCountValue * calcDayValue;
-      animate({
-        duration: 200,
-        timing(timeFraction) {
-          return timeFraction;
-        },
-        draw(progress) {
-          total.textContent = `${Math.ceil(totalValue * progress)}`;
-        },
-      });
     } else {
       totalValue = 0;
     }
+
+    animate({
+      duration: 200,
+      timing(timeFraction) {
+        return timeFraction;
+      },
+      draw(progress) {
+        total.textContent = `${Math.ceil(totalValue * progress)}`;
+      },
+    });
   };
 
   calcBlock.addEventListener('input', countCalc);
