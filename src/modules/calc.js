@@ -30,12 +30,12 @@ const calc = (price = 100) => {
     if (calcTypeValue && calcSquareValue) {
       totalValue = price * calcTypeValue * calcSquareValue * calcCountValue * calcDayValue;
       animate({
-        duration: 100,
+        duration: 200,
         timing(timeFraction) {
           return timeFraction;
         },
         draw(progress) {
-          total.textContent = `${totalValue * progress * 100}`;
+          total.textContent = `${Math.ceil(totalValue * progress)}`;
         },
       });
     } else {
