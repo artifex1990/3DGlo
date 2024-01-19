@@ -1,1 +1,0 @@
-(()=>{"use strict";(()=>{const t=document.getElementById("timers"),s=t.querySelector("span");let n=300;const e=()=>{const o=t.classList.contains("down")?-1:1;t.classList.contains("down")&&n<=0||!t.classList.contains("down")&&n>=300?t.classList.toggle("down"):(n+=o,s.textContent=n),setTimeout((()=>requestAnimationFrame(e)),60)};e()})()})();
