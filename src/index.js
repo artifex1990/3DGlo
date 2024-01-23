@@ -6,8 +6,10 @@ import tabs from './modules/tabs';
 import slider from './modules/slider';
 import sliderCarousel from './modules/sliderCarousel';
 import calc from './modules/calc';
+import sendForm from './modules/sendForm';
 
-timerModule('13 january 2024 01:01:00');
+
+timerModule('31 january 2024 01:01:00');
 menu();
 modal();
 regular();
@@ -15,3 +17,4 @@ tabs();
 slider('.portfolio-content', '.portfolio-item', '.portfolio-dots', 'portfolio-item-active');
 sliderCarousel();
 calc();
+sendForm('form1');
