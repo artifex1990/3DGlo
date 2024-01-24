@@ -8,7 +8,6 @@ import sliderCarousel from './modules/sliderCarousel';
 import calc from './modules/calc';
 import sendForm from './modules/sendForm';
 
-
 timerModule('31 january 2024 01:01:00');
 menu();
 modal();
@@ -17,4 +16,12 @@ tabs();
 slider('.portfolio-content', '.portfolio-item', '.portfolio-dots', 'portfolio-item-active');
 sliderCarousel();
 calc();
-sendForm('form1');
+sendForm({
+  formIds: ['form1', 'form2', 'form3'],
+  someElement: [
+    {
+      id: 'total',
+      type: 'block',
+    },
+  ],
+});
