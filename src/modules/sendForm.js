@@ -1,7 +1,8 @@
 const sendForm = ({ formIds, someElement = [] }) => {
   const statusBlock = document.createElement('div');
   const preloader = document.createElement('div');
-  const errorText = 'Ошибка...';
+  const successText = 'Сохранено!';
+  const errorText = 'Ошибка!';
 
   preloader.classList.add('spinner-grow', 'text-info');
 
@@ -58,6 +59,7 @@ const sendForm = ({ formIds, someElement = [] }) => {
       sendData(formBody)
         .then((data) => {
           statusBlock.querySelector('.spinner-grow').remove();
+          statusBlock.textContent = successText;
 
           formElements.forEach((input) => {
             // eslint-disable-next-line no-param-reassign
