@@ -14,12 +14,12 @@ const menu = () => {
 
   document.body.addEventListener('click', (e) => {
     if (menu.closest('.active-menu')) {
-      if (e.target.closest('ul')) {
+      if (e.target.closest('li > a')) {
         e.preventDefault();
         animationScroll(e.target);
       }
 
-      if (e.target !== menu) {
+      if (!e.target.closest('menu') || e.target.classList.contains('close-btn')) {
         handleMenu();
       }
     }
