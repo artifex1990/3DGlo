@@ -56,10 +56,12 @@ const sendForm = ({ formIds, someElement = [] }) => {
     });
 
     if (validate(formElements)) {
+      const timeClearStatus = 5000;
       sendData(formBody)
         .then((data) => {
           statusBlock.querySelector('.spinner-grow').remove();
           statusBlock.textContent = successText;
+          setTimeout(() => { statusBlock.textContent = ''; }, timeClearStatus);
 
           formElements.forEach((input) => {
             // eslint-disable-next-line no-param-reassign
@@ -69,6 +71,7 @@ const sendForm = ({ formIds, someElement = [] }) => {
         .catch((error) => {
           statusBlock.querySelector('.spinner-grow').remove();
           statusBlock.textContent = errorText;
+          setTimeout(() => { statusBlock.textContent = ''; }, timeClearStatus);
         });
     } else {
       statusBlock.querySelector('.spinner-grow').remove();
