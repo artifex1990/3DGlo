@@ -4,6 +4,7 @@ const regular = () => {
   const emailInputs = document.querySelectorAll('form input[type=email]');
   const phoneInputs = document.querySelectorAll('form input[type=tel]');
   const messageTextarea = document.getElementById('form2-message');
+  const eventsCheck = ['blur', 'input'];
 
   const commonCondition = (event) => {
     // eslint-disable-next-line no-param-reassign
@@ -11,7 +12,7 @@ const regular = () => {
     // eslint-disable-next-line no-param-reassign
     event.target.value = event.target.value.replace(/[-]+/g, '-');
     // eslint-disable-next-line no-param-reassign
-    event.target.value = event.target.value.replace(/^[\s-]+|[\s-]+$|[\s]+(?=[\s-])/g, '');
+    event.target.value = event.target.value.replace(/^[\s-]+|[\s-]{2,}$|[\s]+(?=[\s-])/g, '');
   };
 
   const name = (event) => {
@@ -30,17 +31,26 @@ const regular = () => {
   // eslint-disable-next-line no-param-reassign
   const phone = (event) => {
     // eslint-disable-next-line no-param-reassign
-    event.target.value = event.target.value.replace(/[^\d()-]/g, '');
+    event.target.value = event.target.value.replace(/[^\d()+-]/g, '');
+    commonCondition(event);
+  };
+  const message = (event) => {
+    // eslint-disable-next-line no-param-reassign
+    event.target.value = event.target.value.replace(/[^а-яА-Я\s\d,.!?:;()'"-]/gi, '');
+    // eslint-disable-next-line no-param-reassign
+    event.target.value = event.target.value.replace(/(^|\.\s+)([а-яА-Я])/gi, (str) => str.toUpperCase());
     commonCondition(event);
   };
   // eslint-disable-next-line no-param-reassign
   const numbers = (event) => { event.target.value = event.target.value.replace(/[\D]/g, ''); };
 
-  textInputs.forEach((input) => input.addEventListener('blur', name));
-  emailInputs.forEach((input) => input.addEventListener('blur', email));
-  phoneInputs.forEach((input) => input.addEventListener('blur', phone));
-  calculateInputs.forEach((input) => input.addEventListener('blur', numbers));
-  messageTextarea.addEventListener('blur', name);
+  eventsCheck.forEach((event) => {
+    textInputs.forEach((input) => input.addEventListener(event, name));
+    emailInputs.forEach((input) => input.addEventListener(event, email));
+    phoneInputs.forEach((input) => input.addEventListener(event, phone));
+    calculateInputs.forEach((input) => input.addEventListener(event, numbers));
+    messageTextarea.addEventListener(event, message);
+  });
 };
 
 export default regular;

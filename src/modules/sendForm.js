@@ -16,7 +16,7 @@ const sendForm = ({ formIds, someElement = [] }) => {
   const validate = (list) => {
     const regexpPatternFields = {
       user_name: /[а-я\s]/g,
-      user_phone: /[\d+-]/g,
+      user_phone: /[\d+-]{11,}/g,
       user_message: /[а-я\s\d,.!?\-:;()'"]/g,
     };
     let success = true;
@@ -69,6 +69,7 @@ const sendForm = ({ formIds, someElement = [] }) => {
           statusBlock.textContent = errorText;
         });
     } else {
+      statusBlock.querySelector('.spinner-grow').remove();
       alert('Данные не валидны!');
     }
   };

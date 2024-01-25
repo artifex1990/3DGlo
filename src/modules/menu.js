@@ -4,7 +4,9 @@ const menu = () => {
 
   const animationScroll = (a) => {
     const element = document.querySelector(a.getAttribute('href'));
-    element.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'start' });
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'start' });
+    }
   };
   const handleMenu = () => {
     menu.classList.toggle('active-menu');
