@@ -17,6 +17,7 @@ const menu = () => {
       if (e.target.closest('li > a')) {
         e.preventDefault();
         animationScroll(e.target);
+        handleMenu();
       }
 
       if (!e.target.closest('menu') || e.target.classList.contains('close-btn')) {
